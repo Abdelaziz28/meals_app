@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'homeScreen/homeScreen.dart';
+
 void main() {
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
         primarySwatch: Colors.blue,
       ),
-      // home: const homeScreen(),
+      home: const homeScreen(),
     );
   }
 }
