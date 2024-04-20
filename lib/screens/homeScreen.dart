@@ -5,6 +5,8 @@ import 'package:Meals_App/widgets/categoryLabel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/filters.dart';
+
 class homeScreen extends StatelessWidget {
   const homeScreen({super.key});
   @override
@@ -13,30 +15,23 @@ class homeScreen extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
       return const Scaffold(
         appBar: MyAppBar(title: "Meals App",
-            actionIcon: Icons.star,
-            onPressed: doNun),
+            actionIcon: Icons.star_border_outlined,
+            onPressed: doNun,
+           gotoPath: '/favorites',),
           backgroundColor: Colors.white,
           body: SingleChildScrollView(
             child: Column(
                 children: [
-                  Row(
-                    children: [
-                      FilterLabel(imgPath: 'assets/images/gluten.png', onPressed: doNun),
-                      FilterLabel(imgPath: 'assets/images/lactose.png', onPressed: doNun),
-                      FilterLabel(imgPath: 'assets/images/lactose.png', onPressed: doNun),
-                      FilterLabel(imgPath: 'assets/images/lactose.png', onPressed: doNun),
-                    ],
-                  ),
+                  Filters(),
                   Text('.Categories.',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w600
                   ),),
-                  CategoryLabel(imgPath: 'assets/images/Borger.jpg', onPressed: doNun, name: 'Burger'),
-                  CategoryLabel(imgPath: 'assets/images/Borger.jpg', onPressed: doNun, name: 'Burger'),
-                  CategoryLabel(imgPath: 'assets/images/Borger.jpg', onPressed: doNun, name: 'Burger'),
+                  CategoryLabel(imgPath: 'assets/images/pasta.jpg', onPressed: doNun, name: 'Italian'),
+                  CategoryLabel(imgPath: 'assets/images/Borger.jpg', onPressed: doNun, name: 'American'),
+                  CategoryLabel(imgPath: 'assets/images/oriental.png', onPressed: doNun, name: 'Oriental'),
                 ],
-
             ),
           )
       );

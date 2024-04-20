@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
-class FilterLabel extends StatelessWidget implements PreferredSizeWidget {
+class FilterLabel extends StatefulWidget implements PreferredSizeWidget {
   final String imgPath;
   final Function onPressed;
 
@@ -13,30 +12,46 @@ class FilterLabel extends StatelessWidget implements PreferredSizeWidget {
   }) : super(key: key);
 
   @override
+  State<FilterLabel> createState() => _FilterLabelState();
+
+  @override
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+}
+
+class _FilterLabelState extends State<FilterLabel> {
+  Color background = Colors.grey;
+
+  @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
-    return InkWell(
-      child: Padding(
-        padding: EdgeInsets.fromLTRB(screenWidth*0.06, screenWidth*0.05, screenWidth*0.04, screenWidth*0.05),
+    double screenHeight = MediaQuery.of(context).size.height;
+
+    return Padding(
+      padding: EdgeInsets.fromLTRB(screenWidth * 0.06, screenWidth * 0.05, screenWidth * 0.04, screenWidth * 0.05),
+      child: InkWell(
+        onTap: () {
+          if (background == Colors.grey) {
+            background = Colors.green;
+          } else {
+            background = Colors.grey;
+          }
+          setState(() {});
+        },
         child: Container(
-          width: 0.15*screenWidth,
-          height: 0.12*screenHeight,
+          width: 0.15 * screenWidth,
+          height: 0.12 * screenHeight,
           decoration: BoxDecoration(
-              color: Colors.grey,
-              borderRadius: BorderRadius.circular(10)
+            color: background,
+            borderRadius: BorderRadius.circular(10),
           ),
           child: Padding(
             padding: const EdgeInsets.all(7.0),
             child: Image.asset(
-              this.imgPath,
+              this.widget.imgPath,
             ),
           ),
         ),
       ),
     );
   }
-
-  @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }

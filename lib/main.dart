@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'homeScreen/homeScreen.dart';
+import 'screens/favouritesScreen.dart';
+import 'screens/homeScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +18,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const homeScreen(),
+      routes: {
+        '/favorites': (context) => FavouritesScreen(),
+        '/homescreen': (context) => homeScreen(),
+      },
     );
   }
 }
