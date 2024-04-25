@@ -17,7 +17,7 @@ class Meal {
     this.favourite = false,
   });
 }
-
+final List<bool> attributes =[false,false,false,false];
 final List<Meal> allMeals = [
   Meal(
     mealName: 'Chicken Alfredo',
