@@ -1,5 +1,5 @@
 import 'package:Meals_App/screens/meal_info.dart';
-import 'package:Meals_App/screens/meals.dart';
+import 'package:Meals_App/screens/show_meals.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
