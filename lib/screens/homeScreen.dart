@@ -4,13 +4,17 @@ import 'package:Meals_App/widgets/appbar.dart';
 import 'package:Meals_App/widgets/categoryLabel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../providers/filters_provider.dart';
 import '../widgets/filters.dart';
 
-class homeScreen extends StatelessWidget {
+class homeScreen extends ConsumerWidget {
   const homeScreen({super.key});
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    print("zz");
+    final filterProvider = ref.watch(attributesProvider);
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
       return const Scaffold(
@@ -20,48 +24,28 @@ class homeScreen extends StatelessWidget {
            gotoPath: '/favorites',),
           backgroundColor: Colors.white,
           body: SingleChildScrollView(
-            child: Column(
-                children: [
-                  Filters(),
-                  Text('.Categories.',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600
-                  ),),
-                  CategoryLabel(imgPath: 'assets/images/pasta.jpg', onPressed: doNun, name: 'Italian'),
-                  CategoryLabel(imgPath: 'assets/images/Borger.jpg', onPressed: doNun, name: 'American'),
-                  CategoryLabel(imgPath: 'assets/images/oriental.png', onPressed: doNun, name: 'Oriental'),
-                ],
-            ),
-          )
+              child: Column(
+                  children: [
+                    // Filters(gluten_free: filterProvider[0],lactose_free: filterProvider[1],vegan: filterProvider[2],healthy: filterProvider[3]),
+                    Padding(
+                      padding: EdgeInsets.only(top: 20),
+                      child: Text('.Categories.',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600
+                      ),),
+                    ),
+                    CategoryLabel(imgPath: 'assets/images/pasta.jpg', onPressed: doNun, name: 'Italian'),
+                    CategoryLabel(imgPath: 'assets/images/Borger.jpg', onPressed: doNun, name: 'American'),
+                    CategoryLabel(imgPath: 'assets/images/oriental.png', onPressed: doNun, name: 'Oriental'),
+                  ],
+              ),
+          ),
       );
   }
 }
 
-class MyGridView extends StatelessWidget {
-  final int itemCount;
-  final IndexedWidgetBuilder itemBuilder;
 
-  const MyGridView({
-    Key? key,
-    required this.itemCount,
-    required this.itemBuilder,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 10.0,
-        mainAxisSpacing: 10.0,
-      ),
-      padding: const EdgeInsets.all(10.0),
-      itemCount: itemCount,
-      itemBuilder: itemBuilder,
-    );
-  }
-}
 void doNun(){
 
 }

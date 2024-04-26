@@ -15,6 +15,7 @@ class MealInfo extends StatelessWidget {
         onPressed: () {},
         gotoPath: './homeScreen',
       ),
+
       backgroundColor: Colors.white,
       body: const Center(
         child: Text('Meal Info'),

@@ -1,29 +1,40 @@
 import 'package:Meals_App/models/meals.dart';
+import 'package:Meals_App/providers/filters_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class FilterLabel extends StatefulWidget implements PreferredSizeWidget {
+class FilterLabel extends ConsumerStatefulWidget implements PreferredSizeWidget {
   final String imgPath;
   final Function onPressed;
   final int index;
-  const FilterLabel({
+  bool checked;
+  FilterLabel({
     Key? key,
     required this.imgPath,
     required this.onPressed,
     required this.index,
+    required this.checked,
   }) : super(key: key);
 
   @override
-  State<FilterLabel> createState() => _FilterLabelState();
+  ConsumerState<FilterLabel> createState() => _FilterLabelState();
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+
 }
 
-class _FilterLabelState extends State<FilterLabel> {
+class _FilterLabelState extends ConsumerState<FilterLabel> {
   Color background = Colors.grey;
+
   @override
   Widget build(BuildContext context) {
+    if (widget.checked) {
+      background = Colors.green;
+    } else {
+      background = Colors.grey;
+    }
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
@@ -31,14 +42,15 @@ class _FilterLabelState extends State<FilterLabel> {
       padding: EdgeInsets.fromLTRB(screenWidth * 0.06, screenWidth * 0.05, screenWidth * 0.04, screenWidth * 0.05),
       child: InkWell(
         onTap: () {
-          filters[widget.index] = !filters[widget.index];
-          // access the provider to know which color to show
-          if (filters[widget.index]) {
-            background = Colors.green;
-          } else {
-            background = Colors.grey;
-          }
-          setState(() {});
+          ref.watch(attributesProvider)[widget.index] = !ref.watch(attributesProvider)[widget.index];
+          widget.checked = ref.watch(attributesProvider)[widget.index];
+          setState(() {
+            if (widget.checked) {
+              background = Colors.green;
+            } else {
+              background = Colors.grey;
+            }
+          });
         },
         child: Container(
           width: 0.15 * screenWidth,
