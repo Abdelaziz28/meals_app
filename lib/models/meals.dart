@@ -33,7 +33,7 @@ final List<Meal> allMeals = [
   Meal(
     mealName: 'Vegetable Stir Fry',
     cookingTime: 15,
-    imagePath: '../assets/images/stir_fry.jpg',
+    imagePath: '../assets/images/stirfry.png',
     directions: 'Directions for Vegetable Stir Fry...',
     filters: [true, false, true, true],
     type: 'Side',
@@ -41,7 +41,7 @@ final List<Meal> allMeals = [
   Meal(
     mealName: 'Beef Tacos',
     cookingTime: 30,
-    imagePath: '../assets/images/tacos.jpg',
+    imagePath: '../assets/images/tacos.png',
     directions: 'Directions for Beef Tacos...',
     filters: [false, false, false, false],
     type: 'Main',
@@ -49,7 +49,7 @@ final List<Meal> allMeals = [
   Meal(
     mealName: 'Chocolate Cake',
     cookingTime: 60,
-    imagePath: '../assets/images/chocolate_cake.jpg',
+    imagePath: '../assets/images/chocolate-cake.png',
     directions: 'Directions for Chocolate Cake...',
     filters: [false, true, false, false],
     type: 'Dessert',
@@ -57,7 +57,7 @@ final List<Meal> allMeals = [
   Meal(
     mealName: 'Garden Salad',
     cookingTime: 10,
-    imagePath: '../assets/images/salad.jpg',
+    imagePath: '../assets/images/salad.png',
     directions: 'Directions for Garden Salad...',
     filters: [true, false, true, true],
     type: 'Side',
@@ -65,7 +65,7 @@ final List<Meal> allMeals = [
   Meal(
     mealName: 'Pepperoni Pizza',
     cookingTime: 25,
-    imagePath: '../assets/images/pizza.jpg',
+    imagePath: '../assets/images/pizza.png',
     directions: 'Directions for Pepperoni Pizza...',
     filters: [false, false, false, false],
     type: 'Main',
@@ -73,7 +73,7 @@ final List<Meal> allMeals = [
   Meal(
     mealName: 'Fruit Salad',
     cookingTime: 15,
-    imagePath: '../assets/images/fruit_salad.jpg',
+    imagePath: '../assets/images/fruit_salad.png',
     directions: 'Directions for Fruit Salad...',
     filters: [true, false, true, true],
     type: 'Dessert',
@@ -81,7 +81,7 @@ final List<Meal> allMeals = [
   Meal(
     mealName: 'Mashed Potatoes',
     cookingTime: 30,
-    imagePath: '../assets/images/mashed_potatoes.jpg',
+    imagePath: '../assets/images/mashedpotatoes.png',
     directions: 'Directions for Mashed Potatoes...',
     filters: [true, false, true, true],
     type: 'Side',
@@ -89,7 +89,7 @@ final List<Meal> allMeals = [
   Meal(
     mealName: 'BBQ Ribs',
     cookingTime: 120,
-    imagePath: '../assets/images/ribs.jpg',
+    imagePath: '../assets/images/bbqribs.png',
     directions: 'Directions for BBQ Ribs...',
     filters: [false, false, false, false],
     type: 'Main',
