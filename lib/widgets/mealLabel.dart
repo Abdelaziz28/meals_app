@@ -1,18 +1,21 @@
+import 'package:Meals_App/screens/meal_info.dart';
 import 'package:Meals_App/screens/meals.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CategoryLabel extends StatelessWidget implements PreferredSizeWidget {
+class MealLabel extends StatelessWidget implements PreferredSizeWidget {
   final String imgPath;
   final Function onPressed;
   final String name;
+  final int cookingTime;
 
-  const CategoryLabel({
+  const MealLabel({
     Key? key,
     required this.imgPath,
     required this.onPressed,
     required this.name,
+    required this.cookingTime,
   }) : super(key: key);
 
   @override
@@ -28,7 +31,7 @@ class CategoryLabel extends StatelessWidget implements PreferredSizeWidget {
             onTap: (){
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) =>  MealsScreen(title: this.name),
+                  builder: (context) =>  const MealInfo(),
                 ),
               );
             },
@@ -54,6 +57,30 @@ class CategoryLabel extends StatelessWidget implements PreferredSizeWidget {
           bottom: 20.0,
           child: Text(
             name,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18.0,
+              fontWeight: FontWeight.bold,
+              shadows: [
+                Shadow(
+                  offset: const Offset(1.0, 1.0),
+                  blurRadius: 8.0,
+                  color: Colors.black.withOpacity(0.5),
+                ),
+                Shadow(
+                  offset: const Offset(-1.0, -1.0),
+                  blurRadius: 8.0,
+                  color: Colors.black.withOpacity(0.5),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Positioned(
+          right: 30.0,
+          bottom: 20.0,
+          child: Text(
+            cookingTime.toString(),
             style: TextStyle(
               color: Colors.white,
               fontSize: 18.0,

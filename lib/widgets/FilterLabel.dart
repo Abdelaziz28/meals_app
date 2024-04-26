@@ -17,7 +17,7 @@ class FilterLabel extends StatefulWidget implements PreferredSizeWidget {
   State<FilterLabel> createState() => _FilterLabelState();
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
 class _FilterLabelState extends State<FilterLabel> {
@@ -31,9 +31,9 @@ class _FilterLabelState extends State<FilterLabel> {
       padding: EdgeInsets.fromLTRB(screenWidth * 0.06, screenWidth * 0.05, screenWidth * 0.04, screenWidth * 0.05),
       child: InkWell(
         onTap: () {
-          attributes[widget.index] = !attributes[widget.index];
+          filters[widget.index] = !filters[widget.index];
           // access the provider to know which color to show
-          if (attributes[widget.index]) {
+          if (filters[widget.index]) {
             background = Colors.green;
           } else {
             background = Colors.grey;
