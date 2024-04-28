@@ -7,20 +7,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../providers/filters_provider.dart';
 
-class HomeScreen extends ConsumerWidget {
+class HomeScreen extends StatelessWidget{
   const HomeScreen({super.key});
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     print("zz");
-    final filterProvider = ref.watch(attributesProvider);
-    // final mealsProvider = ref.watch(sortedMealListProvider);
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
       return Scaffold(
         appBar: MyAppBar(title: "Meals App",
             actionIcon: Icons.star_border_outlined,
             onPressed: () {
-              ref.read(sortedMealListProvider.notifier).filterMeals(filterProvider, null, true, false);
             },
            gotoPath: '/favorites',),
           backgroundColor: Colors.white,

@@ -24,7 +24,7 @@ class _ShowMealsState extends ConsumerState<ShowMeals> {
               itemBuilder: (context, index) {
                 final meal = ref.watch(sortedMealListProvider)[index];
                 return MealLabel(
-                    imgPath: 'assets/images/pasta.jpg',
+                    imgPath: meal.imagePath,
                     onPressed: doNun,
                     name: meal.mealName,
                     cookingTime: meal.cookingTime

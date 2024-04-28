@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SortIcon extends ConsumerStatefulWidget {
   SortIcon({super.key});
-  bool sort = false;
+  // late bool sort ;
   @override
   ConsumerState<SortIcon> createState() => _SortIconState();
 }
@@ -19,7 +19,6 @@ class _SortIconState extends ConsumerState<SortIcon> {
     final favorites = ref.watch(favoritesProvider);
     final cookingTime = ref.watch(cookingTimeProvider);
     return IconButton(onPressed: (){
-      widget.sort = !widget.sort;
       ref.watch(cookingTimeProvider.notifier).toggle();
       ref.watch(sortedMealListProvider.notifier).filterMeals(filtersProvider, null, favorites, cookingTime);
       setState(() {});

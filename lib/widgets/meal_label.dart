@@ -1,6 +1,7 @@
 import 'package:Meals_App/screens/meal_info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class MealLabel extends StatelessWidget implements PreferredSizeWidget {
   final String imgPath;
@@ -20,7 +21,11 @@ class MealLabel extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
-
+    String hours = (cookingTime/60).toInt().toString();
+    String minutes = (cookingTime%60).toString();
+    if(minutes.length == 1){
+      minutes = '0$minutes';
+    }
     return Stack(
       children: [
         Padding(
@@ -67,8 +72,8 @@ class MealLabel extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 Shadow(
                   offset: const Offset(-1.0, -1.0),
-                  blurRadius: 8.0,
-                  color: Colors.black.withOpacity(0.5),
+                  blurRadius: 8,
+                  color: Colors.black.withOpacity(1),
                 ),
               ],
             ),
@@ -77,25 +82,37 @@ class MealLabel extends StatelessWidget implements PreferredSizeWidget {
         Positioned(
           right: 30.0,
           bottom: 20.0,
-          child: Text(
-            cookingTime.toString(),
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 18.0,
-              fontWeight: FontWeight.bold,
-              shadows: [
+          child: Row(
+            children: [
+              Icon(Icons.access_time_filled,color: Colors.white,shadows: [
                 Shadow(
                   offset: const Offset(1.0, 1.0),
                   blurRadius: 8.0,
-                  color: Colors.black.withOpacity(0.5),
+                  color: Colors.black.withOpacity(1),
+                )
+              ],),
+              SizedBox(width:4),
+              Text(
+                '$hours:$minutes',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                  shadows: [
+                    Shadow(
+                      offset: const Offset(1.0, 1.0),
+                      blurRadius: 8.0,
+                      color: Colors.black.withOpacity(1),
+                    ),
+                    Shadow(
+                      offset: const Offset(-1.0, -1.0),
+                      blurRadius: 8.0,
+                      color: Colors.black.withOpacity(1),
+                    ),
+                  ],
                 ),
-                Shadow(
-                  offset: const Offset(-1.0, -1.0),
-                  blurRadius: 8.0,
-                  color: Colors.black.withOpacity(0.5),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ],

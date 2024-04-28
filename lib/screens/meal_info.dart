@@ -1,12 +1,13 @@
 import 'package:Meals_App/widgets/appbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MealInfo extends StatelessWidget {
+class MealInfo extends ConsumerWidget {
   const MealInfo({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: MyAppBar(
         title: 'Meal Info',

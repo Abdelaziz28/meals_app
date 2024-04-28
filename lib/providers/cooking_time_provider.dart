@@ -11,7 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // }
 
 class CookingTimeNotifier extends StateNotifier<bool> {
-  CookingTimeNotifier() : super(false);
+  CookingTimeNotifier() : super(true);
 
   void toggle() {
     if (state == true) {
