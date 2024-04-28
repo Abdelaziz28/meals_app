@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'screens/favouritesScreen.dart';
+import 'screens/favourites_screen.dart';
 import 'screens/homeScreen.dart';
 
 void main() {
@@ -18,10 +18,10 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
         primarySwatch: Colors.blue,
       ),
-      home: const homeScreen(),
+      home: const HomeScreen(),
       routes: {
         '/favorites': (context) => const FavouritesScreen(),
-        '/homescreen': (context) => const homeScreen(),
+        '/homescreen': (context) => const HomeScreen(),
       },
     );
   }

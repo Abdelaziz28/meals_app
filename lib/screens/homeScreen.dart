@@ -1,5 +1,4 @@
-
-import 'package:Meals_App/widgets/FilterLabel.dart';
+import 'package:Meals_App/providers/meals_provider.dart';
 import 'package:Meals_App/widgets/appbar.dart';
 import 'package:Meals_App/widgets/categoryLabel.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,23 +6,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../providers/filters_provider.dart';
-import '../widgets/filters.dart';
 
-class homeScreen extends ConsumerWidget {
-  const homeScreen({super.key});
+class HomeScreen extends ConsumerWidget {
+  const HomeScreen({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     print("zz");
     final filterProvider = ref.watch(attributesProvider);
+    // final mealsProvider = ref.watch(sortedMealListProvider);
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
-      return const Scaffold(
+      return Scaffold(
         appBar: MyAppBar(title: "Meals App",
             actionIcon: Icons.star_border_outlined,
-            onPressed: doNun,
+            onPressed: () {
+              ref.read(sortedMealListProvider.notifier).filterMeals(filterProvider, null, true, false);
+            },
            gotoPath: '/favorites',),
           backgroundColor: Colors.white,
-          body: SingleChildScrollView(
+          body: const SingleChildScrollView(
               child: Column(
                   children: [
                     // Filters(gluten_free: filterProvider[0],lactose_free: filterProvider[1],vegan: filterProvider[2],healthy: filterProvider[3]),
@@ -38,6 +39,7 @@ class homeScreen extends ConsumerWidget {
                     CategoryLabel(imgPath: 'assets/images/pasta.jpg', onPressed: doNun, name: 'Italian'),
                     CategoryLabel(imgPath: 'assets/images/Borger.jpg', onPressed: doNun, name: 'American'),
                     CategoryLabel(imgPath: 'assets/images/oriental.png', onPressed: doNun, name: 'Oriental'),
+                    CategoryLabel(imgPath: 'assets/images/all-meals.jpeg', onPressed: doNun, name: 'All Meals'),
                   ],
               ),
           ),
@@ -46,6 +48,4 @@ class homeScreen extends ConsumerWidget {
 }
 
 
-void doNun(){
-
-}
+void doNun() {}

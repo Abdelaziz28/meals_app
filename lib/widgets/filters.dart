@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'FilterLabel.dart';
+import 'Filter_label.dart';
 
 class Filters extends StatefulWidget {
   final bool gluten_free;

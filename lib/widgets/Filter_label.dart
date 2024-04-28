@@ -1,5 +1,7 @@
-import 'package:Meals_App/models/meals.dart';
+import 'package:Meals_App/providers/cooking_time_provider.dart';
+import 'package:Meals_App/providers/favorites_provider.dart';
 import 'package:Meals_App/providers/filters_provider.dart';
+import 'package:Meals_App/providers/meals_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -44,6 +46,10 @@ class _FilterLabelState extends ConsumerState<FilterLabel> {
         onTap: () {
           ref.watch(attributesProvider)[widget.index] = !ref.watch(attributesProvider)[widget.index];
           widget.checked = ref.watch(attributesProvider)[widget.index];
+          final filtersProvider = ref.watch(attributesProvider);
+          final favorties = ref.watch(favoritesProvider);
+          final cookingTime = ref.watch(cookingTimeProvider);
+          ref.read(sortedMealListProvider.notifier).filterMeals(filtersProvider, null, favorties, cookingTime);
           setState(() {
             if (widget.checked) {
               background = Colors.green;

@@ -1,9 +1,11 @@
+import 'package:Meals_App/providers/filters_provider.dart';
+import 'package:Meals_App/providers/meals_provider.dart';
 import 'package:Meals_App/screens/show_meals.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CategoryLabel extends StatelessWidget implements PreferredSizeWidget {
+class CategoryLabel extends ConsumerWidget implements PreferredSizeWidget {
   final String imgPath;
   final Function onPressed;
   final String name;
@@ -16,9 +18,10 @@ class CategoryLabel extends StatelessWidget implements PreferredSizeWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
+    final filterProvider = ref.watch(attributesProvider);
 
     return Stack(
       children: [
@@ -26,9 +29,10 @@ class CategoryLabel extends StatelessWidget implements PreferredSizeWidget {
           padding: EdgeInsets.fromLTRB(screenWidth*0.06, screenWidth*0.05, screenWidth*0.04, screenWidth*0.05),
           child: InkWell(
             onTap: (){
+              ref.watch(sortedMealListProvider.notifier).filterMeals(filterProvider, name, false, false);
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) =>  MealsScreen(title: this.name),
+                  builder: (context) =>  MealsScreen(title: name),
                 ),
               );
             },

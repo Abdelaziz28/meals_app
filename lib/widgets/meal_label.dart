@@ -1,8 +1,6 @@
 import 'package:Meals_App/screens/meal_info.dart';
-import 'package:Meals_App/screens/show_meals.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class MealLabel extends StatelessWidget implements PreferredSizeWidget {
   final String imgPath;

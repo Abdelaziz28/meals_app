@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../providers/meals_provider.dart';
-import 'mealLabel.dart';
+import 'meal_label.dart';
 
 class ShowMeals extends ConsumerStatefulWidget {
   const ShowMeals({super.key});

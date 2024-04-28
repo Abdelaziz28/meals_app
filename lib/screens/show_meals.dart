@@ -1,4 +1,3 @@
-import 'package:Meals_App/widgets/mealLabel.dart';
 import 'package:Meals_App/widgets/showmeals.dart';
 import 'package:Meals_App/widgets/sort_icon.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,14 +12,16 @@ import '../providers/meals_provider.dart';
 class MealsScreen extends ConsumerWidget {
   final String title;
   const MealsScreen({
-    super.key,
+    Key? key,
     required this.title,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final filterProvider = ref.watch(attributesProvider);
+    print(filterProvider);
     final mealsProvider = ref.watch(sortedMealListProvider);
+    print(mealsProvider);
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -29,7 +30,7 @@ class MealsScreen extends ConsumerWidget {
         actionIcon: Icons.star_border_outlined,
         onPressed: (){
         },
-        gotoPath: '/homescreen',
+        gotoPath: '/favorites',
       ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -49,7 +50,7 @@ class MealsScreen extends ConsumerWidget {
               ),
             ),
             Text(mealsProvider.length.toString()),
-            ShowMeals(),
+            const ShowMeals(),
           ],
         ),
       ),

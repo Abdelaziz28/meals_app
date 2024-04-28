@@ -1,7 +1,5 @@
-
-import 'package:Meals_App/widgets/FilterLabel.dart';
 import 'package:Meals_App/widgets/appbar.dart';
-import 'package:Meals_App/widgets/categoryLabel.dart';
+import 'package:Meals_App/widgets/showmeals.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -31,6 +29,7 @@ class FavouritesScreen extends ConsumerWidget {
                     fontSize: 20,
                     fontWeight: FontWeight.w600
                 ),),
+              const ShowMeals(),
             ],
           ),
         )

@@ -1,5 +1,3 @@
-import 'package:Meals_App/providers/filters_provider.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class Meal {
   final String mealName;
@@ -17,7 +15,7 @@ class Meal {
     required this.directions,
     required this.filters,
     required this.type,
-    this.favourite = false,
+    required this.favourite,
   });
 }
 final List<bool> filters =[false,false,false,false];
@@ -28,7 +26,8 @@ final List<Meal> allMeals = [
     imagePath: '../assets/images/alfredo.png',
     directions: 'Directions for Chicken Alfredo...',
     filters: [false, true, false, false],
-    type: 'Main',
+    type: 'Italian',
+    favourite: true
   ),
   Meal(
     mealName: 'Vegetable Stir Fry',
@@ -36,7 +35,8 @@ final List<Meal> allMeals = [
     imagePath: '../assets/images/stirfry.png',
     directions: 'Directions for Vegetable Stir Fry...',
     filters: [true, false, true, true],
-    type: 'Side',
+    type: 'Oriental',
+    favourite: false
   ),
   Meal(
     mealName: 'Beef Tacos',
@@ -44,7 +44,8 @@ final List<Meal> allMeals = [
     imagePath: '../assets/images/tacos.png',
     directions: 'Directions for Beef Tacos...',
     filters: [false, false, false, false],
-    type: 'Main',
+    type: 'American',
+    favourite: true
   ),
   Meal(
     mealName: 'Chocolate Cake',
@@ -52,7 +53,8 @@ final List<Meal> allMeals = [
     imagePath: '../assets/images/chocolate-cake.png',
     directions: 'Directions for Chocolate Cake...',
     filters: [false, true, false, false],
-    type: 'Dessert',
+    type: 'American',
+    favourite: false
   ),
   Meal(
     mealName: 'Garden Salad',
@@ -60,7 +62,8 @@ final List<Meal> allMeals = [
     imagePath: '../assets/images/salad.png',
     directions: 'Directions for Garden Salad...',
     filters: [true, false, true, true],
-    type: 'Side',
+    type: 'American',
+    favourite: false
   ),
   Meal(
     mealName: 'Pepperoni Pizza',
@@ -68,7 +71,8 @@ final List<Meal> allMeals = [
     imagePath: '../assets/images/pizza.png',
     directions: 'Directions for Pepperoni Pizza...',
     filters: [false, false, false, false],
-    type: 'Main',
+    type: 'Italian',
+    favourite: false
   ),
   Meal(
     mealName: 'Fruit Salad',
@@ -76,7 +80,8 @@ final List<Meal> allMeals = [
     imagePath: '../assets/images/fruit_salad.png',
     directions: 'Directions for Fruit Salad...',
     filters: [true, false, true, true],
-    type: 'Dessert',
+    type: 'American',
+    favourite: true
   ),
   Meal(
     mealName: 'Mashed Potatoes',
@@ -84,7 +89,8 @@ final List<Meal> allMeals = [
     imagePath: '../assets/images/mashedpotatoes.png',
     directions: 'Directions for Mashed Potatoes...',
     filters: [true, false, true, true],
-    type: 'Side',
+    type: 'Oriental',
+    favourite: false
   ),
   Meal(
     mealName: 'BBQ Ribs',
@@ -92,7 +98,8 @@ final List<Meal> allMeals = [
     imagePath: '../assets/images/bbqribs.png',
     directions: 'Directions for BBQ Ribs...',
     filters: [false, false, false, false],
-    type: 'Main',
+    type: 'Oriental',
+    favourite: false
   ),
   Meal(
     mealName: 'Ice Cream Sundae',
@@ -100,7 +107,8 @@ final List<Meal> allMeals = [
     imagePath: '../assets/images/sundae.jpg',
     directions: 'Directions for Ice Cream Sundae...',
     filters: [false, true, false, false],
-    type: 'Dessert',
+    type: 'American',
+    favourite: false
   ),
 ];
 

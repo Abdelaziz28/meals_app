@@ -1,9 +1,11 @@
-import 'package:Meals_App/screens/favouritesScreen.dart';
-import 'package:Meals_App/screens/homeScreen.dart';
+import 'package:Meals_App/providers/favorites_provider.dart';
+import 'package:Meals_App/providers/filters_provider.dart';
+import 'package:Meals_App/providers/meals_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
+class MyAppBar extends ConsumerWidget implements PreferredSizeWidget {
   final String title;
   final IconData actionIcon;
   final Function onPressed;
@@ -18,9 +20,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final filtersProvider = ref.watch(attributesProvider);
     return AppBar(
-      backgroundColor: const Color(0xFFD9D9D9),
+      backgroundColor: Color(0xFFD9D9D9),
       title: Text(
         title,
         textAlign: TextAlign.center,
@@ -31,8 +34,12 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           icon: Icon(actionIcon),
           onPressed: () {
             if(gotoPath == '/homescreen'){
+              ref.read(favoritesProvider.notifier).setFalse();
               Navigator.of(context).pop();
             }else{
+              ref.read(favoritesProvider.notifier).setTrue();
+              final favorite = ref.watch(favoritesProvider);
+              ref.watch(sortedMealListProvider.notifier).filterMeals(filtersProvider, "All Meals", favorite, false);
               Navigator.of(context).pushNamed(gotoPath);
             }},
             ),
