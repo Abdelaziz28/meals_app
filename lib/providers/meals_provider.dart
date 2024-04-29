@@ -40,14 +40,10 @@ class MealsNotifier extends StateNotifier<List<Meal>> {
       type = constType;
     }
     state = allMeals;
-    print(state);
     state = state.where((meal) {
       for (int i = 0; i < attributes.length; i++) {
         if (attributes[i] && !meal.filters[i]) return false; // Check attributes
       }
-      print(favorite);
-      print(meal.favourite);
-      print(type);
       if (favorite && !meal.favourite) return false; // Check if favorite
       if (type == 'All Meals') return true;
       if (type != meal.type) return false; // Check meal type
@@ -57,7 +53,6 @@ class MealsNotifier extends StateNotifier<List<Meal>> {
     if (sortcookingtime) {
       state.sort((meal1, meal2) => meal1.cookingTime.compareTo(meal2.cookingTime));
     }
-    print(state);
   }
 
     // List<Meal> temp =  meals.where((meal) {
