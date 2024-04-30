@@ -1,3 +1,4 @@
+import 'package:Meals_App/utilities/colors.dart';
 import 'package:Meals_App/widgets/showmeals.dart';
 import 'package:Meals_App/widgets/sort_icon.dart';
 import 'package:flutter/cupertino.dart';
@@ -42,7 +43,7 @@ class MealsScreen extends ConsumerWidget {
               child: Row(
                 children: [
                   Text(title, style: const TextStyle(
-                        fontSize: 20,
+                        fontSize: 24,
                         fontWeight: FontWeight.w600
                     ),),
                   SortIcon(),

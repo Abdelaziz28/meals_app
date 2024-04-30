@@ -1,9 +1,11 @@
+import 'package:Meals_App/models/meals.dart';
 import 'package:Meals_App/screens/meal_info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class MealLabel extends StatelessWidget implements PreferredSizeWidget {
+  final Meal displayedMeal;
   final String imgPath;
   final Function onPressed;
   final String name;
@@ -11,6 +13,7 @@ class MealLabel extends StatelessWidget implements PreferredSizeWidget {
 
   const MealLabel({
     Key? key,
+    required this.displayedMeal,
     required this.imgPath,
     required this.onPressed,
     required this.name,
@@ -34,7 +37,7 @@ class MealLabel extends StatelessWidget implements PreferredSizeWidget {
             onTap: (){
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) =>  const MealInfo(),
+                  builder: (context) => MealInfo(meal: displayedMeal,),
                 ),
               );
             },

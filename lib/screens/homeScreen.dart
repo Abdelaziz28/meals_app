@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget{
                       padding: EdgeInsets.only(top: 20),
                       child: Text('.Categories.',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 24,
                         fontWeight: FontWeight.w600
                       ),),
                     ),

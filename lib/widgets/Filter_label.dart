@@ -2,6 +2,7 @@ import 'package:Meals_App/providers/cooking_time_provider.dart';
 import 'package:Meals_App/providers/favorites_provider.dart';
 import 'package:Meals_App/providers/filters_provider.dart';
 import 'package:Meals_App/providers/meals_provider.dart';
+import 'package:Meals_App/utilities/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -33,9 +34,9 @@ class _FilterLabelState extends ConsumerState<FilterLabel> {
   @override
   Widget build(BuildContext context) {
     if (widget.checked) {
-      background = Colors.green;
+      background = backgroundColor;
     } else {
-      background = Colors.grey;
+      background = greyColor;
     }
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;

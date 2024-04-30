@@ -1,6 +1,7 @@
 import 'package:Meals_App/providers/favorites_provider.dart';
 import 'package:Meals_App/providers/filters_provider.dart';
 import 'package:Meals_App/providers/meals_provider.dart';
+import 'package:Meals_App/utilities/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -23,15 +24,21 @@ class MyAppBar extends ConsumerWidget implements PreferredSizeWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final filtersProvider = ref.watch(attributesProvider);
     return AppBar(
-      backgroundColor: Color(0xFFD9D9D9),
+      backgroundColor: backgroundColor,
       title: Text(
         title,
         textAlign: TextAlign.center,
+        style: const TextStyle(
+          color: Colors.white,
+        ),
       ),
       centerTitle: true,
       actions: <Widget>[
         IconButton(
-          icon: Icon(actionIcon),
+          icon: Icon(
+            actionIcon,
+            color: Colors.white,
+          ),
           onPressed: () {
             if(gotoPath == '/homescreen'){
               ref.read(favoritesProvider.notifier).setFalse();
